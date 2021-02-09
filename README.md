@@ -52,14 +52,16 @@
 
 ## shippings テーブル
 
-| Column                 | Type       | Options     |
-| ---------------------- | ---------- | ----------- |
-| zip                    | integer    | null: false |
-| delivery_prefectures   | string     | null: false |
-| delivery_municipality  | string     | null: false |
-| delivery_street        | string     | null: false |
-| delivery_building      | string     |             |
-| tel                    | integer    | null: false |
+| Column                  | Type       | Options                        |
+| ----------------------- | ---------- | ------------------------------ |
+| zip                     | string     | null: false                    |
+| delivery_prefectures_id | integer    | null: false                    |
+| delivery_municipality   | string     | null: false                    |
+| delivery_street         | string     | null: false                    |
+| delivery_building       | string     |                                |
+| tel                     | string     | null: false                    |
+| user                    | references | null: false, foreign_key: true |
+| item                    | references | null: false, foreign_key: true |
 
 ### Association
 
