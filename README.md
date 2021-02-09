@@ -20,17 +20,17 @@
 
 ## items テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| item_name    | string     | null: false                    |
-| category     | string     | null: false                    |
-| condition    | string     | null: false                    |
-| allocation   | string     | null: false                    |
-| from         | string     | null: false                    |
-| to_ship      | string     | null: false                    |                
-| description  | text       | null: false                    |
-| price        | integer    | null: false                    |
-| user         | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| item_name     | string     | null: false                    |
+| category_id   | integer    | null: false                    |
+| condition_id  | integer    | null: false                    |
+| allocation_id | integer    | null: false                    |
+| from_id       | integer    | null: false                    |
+| to_ship_id    | integer    | null: false                    |                
+| description   | text       | null: false                    |
+| price         | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -48,16 +48,18 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_many :shippings
+- has_one :shipping
 
 ## shippings テーブル
 
 | Column                 | Type       | Options     |
 | ---------------------- | ---------- | ----------- |
+| zip                    | integer    | null: false |
 | delivery_prefectures   | string     | null: false |
 | delivery_municipality  | string     | null: false |
 | delivery_street        | string     | null: false |
 | delivery_building      | string     |             |
+| tel                    | integer    | null: false |
 
 ### Association
 
