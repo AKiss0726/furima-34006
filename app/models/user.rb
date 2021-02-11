@@ -11,7 +11,7 @@ class User < ApplicationRecord
     validates :family_name
     validates :first_name
   end
-  with_options presence: true, format: { with: ァ-ヶ } do
+  with_options presence: true, format: { with: /ァ-ヶ/ } do
     validates :furigana_family_name
     validates :furigana_first_name
   end
