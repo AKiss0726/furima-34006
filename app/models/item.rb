@@ -22,7 +22,7 @@ class Item < ApplicationRecord
     validates :image
   end
 
-  with_options numericality { other_than: 1 } do
+  with_options numericality: { other_than: 1 } do
     validates :category_id
     validates :condition_id
     validates :allocation_id
@@ -31,5 +31,5 @@ class Item < ApplicationRecord
   end
 
   validates :price, format: { with: /\A[0-9]+\z/ }
-  
+
 end
