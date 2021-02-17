@@ -15,4 +15,5 @@ class User < ApplicationRecord
     validates :furigana_family_name
     validates :furigana_first_name
   end
+  
 end
