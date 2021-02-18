@@ -28,31 +28,31 @@ RSpec.describe Item, type: :model do
       it 'category_id(カテゴリー)が空では出品できないこと' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
 
       it 'condition_id(商品の状態)が空では出品できないこと' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition must be other than 1")
+        expect(@item.errors.full_messages).to include('Condition must be other than 1')
       end
 
       it 'allocation_id(配送料の負担)が空では出品できないこと' do
         @item.allocation_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Allocation must be other than 1")
+        expect(@item.errors.full_messages).to include('Allocation must be other than 1')
       end
 
       it 'from_id(発送元)が空では出品できないこと' do
         @item.from_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("From must be other than 1")
+        expect(@item.errors.full_messages).to include('From must be other than 1')
       end
 
       it 'to_ship_id(発送までの日数)が空では出品できないこと' do
         @item.to_ship_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("To ship must be other than 1")
+        expect(@item.errors.full_messages).to include('To ship must be other than 1')
       end
 
       it 'price(値段)が空では出品できないこと' do
@@ -64,31 +64,31 @@ RSpec.describe Item, type: :model do
       it 'price(値段)を全角で入力しても出品できないこと' do
         @item.price = '５００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
 
       it 'price(値段)を英数混合で入力しても出品できないこと' do
         @item.price = '500yen'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
 
       it 'price(値段)を英字のみで入力しても出品できないこと' do
         @item.price = 'abcde'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
-      
+
       it 'price(値段)が¥299円以下では出品できないこと' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
 
       it 'price(値段)が¥10,000,000円以上では出品できないこと' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
 
       it 'image(商品画像)が無ければ出品できないこと' do
@@ -96,8 +96,6 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
-
     end
   end
 end
-

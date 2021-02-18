@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-
   belongs_to :user
   has_one_attached :image
 
@@ -31,5 +30,4 @@ class Item < ApplicationRecord
   end
 
   validates :price, format: { with: /\A[0-9]+\z/ }
-
 end

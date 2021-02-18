@@ -14,13 +14,13 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       render :new
-    end    
+    end
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:item_name, :price, :category_id, :condition_id, :allocation_id, :from_id, :to_ship_id, :description, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:item_name, :price, :category_id, :condition_id, :allocation_id, :from_id, :to_ship_id,
+                                 :description, :image).merge(user_id: current_user.id)
   end
-  
 end
