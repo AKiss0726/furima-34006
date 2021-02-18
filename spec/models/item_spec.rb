@@ -55,10 +55,28 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("To ship must be other than 1")
       end
 
-      it 'price(値段)が空では登録できないこと' do
+      it 'price(値段)が空では出品できないこと' do
         @item.price = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
+      end
+
+      it 'price(値段)を全角で入力しても出品できないこと' do
+        @item.price = '５００'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it 'price(値段)を英数混合で入力しても出品できないこと' do
+        @item.price = '500yen'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it 'price(値段)を英字のみで入力しても出品できないこと' do
+        @item.price = 'abcde'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
       end
       
       it 'price(値段)が¥299円以下では出品できないこと' do
