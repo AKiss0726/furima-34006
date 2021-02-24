@@ -13,7 +13,7 @@ class PurchaseShipping
     validates :from_id, numericality: { other_than: 1, message: "can't be blank" }
 
   def save
-    order = Order.create(user_id: user_id, item_id: item_id)
-    Address.create(zip: zip, from_id: from_id, delivery_municipality: delivery_municipality, delivery_street: delivery_street, delivery_building: delivery_building, tel: tel, order_id: order.id)
+    purchase = Purchase.create(user_id: user_id, item_id: item_id)
+    Shipping.create(zip: zip, from_id: from_id, delivery_municipality: delivery_municipality, delivery_street: delivery_street, delivery_building: delivery_building, tel: tel, purchase_id: purchase.id)
   end
 end
