@@ -7,7 +7,5 @@ FactoryBot.define do
     delivery_building { '東京ハウス' }
     tel { '08098765432' }
     token { 'sample' }
-    association :user
-    association :item
   end
 end

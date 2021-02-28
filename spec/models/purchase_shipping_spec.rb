@@ -12,6 +12,11 @@ RSpec.describe PurchaseShipping, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@purchase_shipping).to be_valid
       end
+
+      it 'delivery_building(建物名)が空でも保存できること' do
+        @purchase_shipping.delivery_building = ''
+        expect(@purchase_shipping).to be_valid
+      end
     end
 
     context '保存できない時' do
@@ -49,12 +54,7 @@ RSpec.describe PurchaseShipping, type: :model do
         @purchase_shipping.delivery_street = ''
         @purchase_shipping.valid?
         expect(@purchase_shipping.errors.full_messages).to include("Delivery street can't be blank")
-      end
-
-      it 'delivery_building(建物名)が空でも保存できること' do
-        @purchase_shipping.delivery_building = ''
-        expect(@purchase_shipping).to be_valid
-      end
+      end     
 
       it 'tel(電話番号)が空では保存できないこと' do
         @purchase_shipping.tel = ''
