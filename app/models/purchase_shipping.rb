@@ -8,6 +8,8 @@ class PurchaseShipping
     validates :delivery_street
     validates :tel, format: { with: /\A\d{10}\z|\A\d{11}\z/, message: 'input only number' }
     validates :token
+    validates :user_id
+    validates :item_id
   end
 
   validates :from_id, numericality: { other_than: 1, message: 'select' }
